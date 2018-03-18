@@ -16,7 +16,7 @@
 
 $config = include ('config.php');
 
-$chain = $config['chain'];
+$chain = $config['chain_name'];
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
@@ -52,4 +52,4 @@ echo "cURL Error #:" . $err;
 echo $response;
 }
 
-$transaction_id = $response;
+//$tx_id = $response;
