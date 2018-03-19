@@ -76,9 +76,69 @@ $(document).ready(function() {
     });
   }
 
+
+  $(document).ready(function() {
+  //alert( "Handler for .onload() called." );
+  //event.preventDefault();
+  
+
+ 
+  $.ajax({
+   type: "POST",
+   url: 'poe-api/api/latest.php',
+   data:{ count: 5 },
+   success:function(Response) {   
+           
+            var x = Response;
+            x = JSON.parse(x);
+            console.log("publish response here", x);
+
+            var result = x.result;
+            var data = result.reverse();
+
+            $('#recently_published').append('<table class="table table-striped table-hover"><tr><th>Digest</th><th> Timestamp </th></tr></table>');            
+            console.log("result:", data);
+
+            table_data = data;
+            console.log("result2:", table_data);
+
+            for(var i=0; i<5; i++)
+              {     
+
+
+                    var badge = '';
+                    if (table_data[i].confirmations > 0) {
+                    badge = '<span class="label label-success">✔</span>';
+                    }
+                    
+                    var signature = table_data[i].key;
+                    console.log(signature);
+                    var confirmations = table_data[i].confirmations;
+
+                    var timestamp = table_data[i].blocktime;
+
+                    var date = new Date(timestamp*1000);
+
+                    var year = date.getUTCFullYear();
+                    var month = date.getUTCMonth() + 1;
+                    var day = date.getUTCDate();
+                    var hours = date.getUTCHours();
+                    var minutes = date.getUTCMinutes();
+                    var seconds = date.getUTCSeconds();
+
+                    $('#recently_published').append('<table class="table table-striped table-hover"><tr><td>' + badge + '</td><td><a href="./details.php?signature=' + signature +
+          '" target="_blank">' + signature +
+          '</a></td><td> ' +year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds+ "  " + "(UTC Time)" +  '</td></tr></table>');
+                    
+            }
+                }
+            });
+          
+});
   // latest documents
-  var refreshLatest = function(type, count, table) {
-    $.getJSON('./api/v1/latest/' + type + "/" + count, function(data) {
+ /* var refreshLatest = function(type, count, table) {
+    
+      $.getJSON('poe-api/api/latest.php/' + type + "/" + count, function(data) {
       var items = [];
 
       items.push(
@@ -108,7 +168,7 @@ $(document).ready(function() {
   refreshLatest("published", 5,recently_published);
 
   
-
+*/
   var crypto_callback = function(p) {
     var w = ((p * 100).toFixed(0));
     bar.width(w + '%');
@@ -132,14 +192,17 @@ $(document).ready(function() {
   var signature = $('#signature').val();
   //console.log(name,email,message,signature);
 
+  var dataArray = {name : name, email : email, message : message, signature : signature};
+  var str = JSON.stringify(dataArray);
+  var dataHex = toHex(str);
 
-
+  console.log("data hex is:", dataHex);
 
  
   $.ajax({
    type: "POST",
    url: 'poe-api/api/publish.php',
-   data:{name: name, email : email , message: message, signature : signature},
+   data:{name: name, email : email , message: message, signature : signature, dataHex: dataHex},
    success:function(Response) {   
            
             var x = Response;
@@ -148,7 +211,26 @@ $(document).ready(function() {
 
             var tx_id = x.result;
             $('#wait').remove();
+            $('#description_container').append("<h2>Success</h2>");
+
+
+
+            var longUrl = window.location.host + "/details.php?signature=" + signature;
             
+
+            //var items = [];
+            $('#description_container').append(
+            '<table class="table table-striped table-hover"><thead><tr><th> Data </th><th> Value</th></tr></thead></table>');
+       
+            /*Object.keys(x).forEach(function(key) {
+            if ( key == "long_url" )
+              $('#description_container').after('<table class="table table-striped table-hover><tr><td>' + key+ '</td><td><a href='+x[key]+' target="_blank">' + x[key]+ '</a></td></tr></table>');
+            else
+              $('#description_container').append('<table class="table table-striped table-hover><tr><td>' + key+ '</td><td>' + x[key]+ '</td></tr></table>');
+            });
+*/
+
+            //console.log("long url is: ", longUrl);
 
             transaction_id = tx_id;
             //console.log("Transaction id:",transaction_id);
@@ -158,11 +240,11 @@ $(document).ready(function() {
             data:{ tx_id : transaction_id },
             success:function(Response) {   
            
-                    console.log("list: ", transaction_id);
+                    //console.log("list: ", transaction_id);
                     var y = Response;
                     y = JSON.parse(y);
 
-                    $('#description_container').append("<h2>Success</h2>");
+                    
 
                     var result = y.result;
                     console.log("result:", result);
@@ -174,18 +256,18 @@ $(document).ready(function() {
 
                     var date = new Date(timestamp*1000);
 
-                    var year = date.getFullYear();
-                    var month = date.getMonth() + 1;
-                    var day = date.getDate();
-                    var hours = date.getHours();
-                    var minutes = date.getMinutes();
-                    var seconds = date.getSeconds();
+                    var year = date.getUTCFullYear();
+                    var month = date.getUTCMonth() + 1;
+                    var day = date.getUTCDate();
+                    var hours = date.getUTCHours();
+                    var minutes = date.getUTCMinutes();
+                    var seconds = date.getUTCSeconds();
             
 
             
 
 
-                    $('#description_container').append("<table class='table table-striped table-hover'><tr><th>Data </th><th> Value</th></tr><tr><td> Name  </td> <td  >"+   name   +"</td></tr><tr><td>Email  </td> <td  >"+   email   +"</td></tr><tr><td> Message  </td> <td  >"+   message  +"</td></tr><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td>Blocktime  </td> <td  >"+   blocktime   +"</td></tr><tr><td> Blockhash </td><td>"+   blockhash   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td> Transaction Id    </td  ><td>"+   tx_id   +"</td></tr><tr><td> Time </td><td>"+year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds+ " " + "(UTC TIME)"+ "</td></tr></table>");
+                    $('#description_container').append("<table class='table table-striped table-hover'><tr><td> Name  </td> <td  >"+   name   +"</td></tr><tr><td>Email  </td> <td  >"+   email   +"</td></tr><tr><td> Message  </td> <td  >"+   message  +"</td></tr><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td> Url  </td> <td><a href= "+ longUrl +' target="_blank">' + longUrl + "</a></td></tr><tr><td>Blocktime  </td> <td  >"+   blocktime   +"</td></tr><tr><td> Blockhash </td><td>"+   blockhash   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td> Transaction Id    </td  ><td>"+   tx_id   +"</td></tr><tr><td> Time </td><td>"+year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds+ " " + "(UTC TIME)"+ "</td></tr></table>");
 
       
             
@@ -237,12 +319,28 @@ $(document).ready(function() {
     });
 
   });
+
+
+  // toHex() function here that converts any string toHex
+// Params : str 
+// return : hex 
+function toHex(str) {
+    var arr = [];
+  for (var i = 0, l = str.length; i < l; i ++) {
+    var hex = Number(str.charCodeAt(i)).toString(16);
+    arr.push(hex.length > 1 && hex || "0" + hex);
+  }
+  return arr.join('');
+
+}
+
+
+
 });
 
 
-
-
+//Global variables
 
 var transaction_id;
-
+var table_data;
 

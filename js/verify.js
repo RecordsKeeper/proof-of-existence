@@ -97,36 +97,8 @@ $(document).ready(function() {
   //console.log(name,email,message,signature);
   window.location.href = "details.php?signature="+signature;
 
-//   $.post('./api/v1/verify/' + signature, function(data){
-//     console.log(data);
-//     $('#wait').remove();
-//     $('#description_container').append("<h2>Success</h2>");
-//     var items = [];
-//       items.push(
-//         '<table class="table table-striped table-hover"><thead><tr><th> Data </th><th> Value</th></tr></thead>');
-       
-//         Object.keys(data).forEach(function(key) {
-//           if (key=="long_url" || key=="short_url")
-//              items.push('<tr><td>' + key+ '</td><td><a href='+data[key]+' target="_blank">' + data[key]+ '</a></td></tr>');
-//           else
-//             items.push('<tr><td>' + key+ '</td><td>' + data[key]+ '</td></tr>');
-//         });
-// items.push('</table>');
-      
-//         $("#description_container").append(items.join(''));
-      
-//       // $('<div/>', {
-//       //   'class': 'table',
-//       //   html: items.join('')
-//       // }).appendTo(container);
-//   }, 'json');
-
-//  $( "#upload_form" ).trigger('reset');
-//  explain.html(translate(''));
-//  bar.width('0%');
-
-//  $('#description').remove();
-//  $('#description_container').append('<div id="wait"><h2> Generating PoE... Please wait...</h2><br/><img src="img/gears.gif"/></div>');
+ /* 
+*/
   
 });
  

@@ -5,13 +5,7 @@
 	$email = $_POST['email'];
 	$message= $_POST['message'];
 	$signature=$_POST['signature'];
-
-
-   $dataArray = array("signature" => $signature,"name" => $name, "email"=> $email, "message"=> $message);
-   $dataJSON = json_encode($dataArray);
-   $dataBase64 = base64_encode($dataJSON );
-   $dataHex = bin2hex($dataBase64);
-
+  $dataHex = $_POST['dataHex'];
    
 
 $config = include ('config.php');
@@ -51,5 +45,3 @@ echo "cURL Error #:" . $err;
 } else {
 echo $response;
 }
-
-//$tx_id = $response;

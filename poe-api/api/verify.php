@@ -1,12 +1,13 @@
 <?php
 
+$signature = $_POST['signature'];
+
 $config = include ('config.php');
 
 $curl = curl_init();
 
-
 curl_setopt_array($curl, array(
- CURLOPT_PORT => $config['rk_port'],
+  CURLOPT_PORT => $config['rk_port'],
  CURLOPT_URL => $config['rk_host'],
  CURLOPT_USERPWD => $config['rk_user'].":".$config['rk_pass'],
  CURLOPT_RETURNTRANSFER => true,
@@ -15,16 +16,14 @@ curl_setopt_array($curl, array(
  CURLOPT_TIMEOUT => 30,
  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
  CURLOPT_CUSTOMREQUEST => "POST",
- CURLOPT_POSTFIELDS => "{\"method\":\"liststreamitems\",\"params\":[\"root\", false, 5],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
+ CURLOPT_POSTFIELDS => "{\"method\":\"liststreamkeyitems\",\"params\":[\"root\",\"$signature\"],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
  CURLOPT_HTTPHEADER => array(
    
    "cache-control: no-cache",
    "content-type: text/plain",
    
  ),
-)
-);
-
+));
 
 $response = curl_exec($curl);
 $err = curl_error($curl);curl_close($curl);if ($err) {
