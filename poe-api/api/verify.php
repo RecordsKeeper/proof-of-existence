@@ -2,7 +2,7 @@
 
 $signature = $_POST['signature'];
 
-$config = include ('config.php');
+$config = include ('config-test.php');
 
 $curl = curl_init();
 

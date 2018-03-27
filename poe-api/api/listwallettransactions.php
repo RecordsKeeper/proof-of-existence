@@ -1,6 +1,6 @@
 <?php
 
-$config = include ('config.php');
+$config = include ('config-test.php');
 
 $chain = $config['chain_name'];
 

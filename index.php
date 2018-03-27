@@ -1,8 +1,9 @@
 <?php
 include_once 'include/header.php';
 include_once 'include/nav.php';
+include_once 'js.php';
 ?>
-<script src="js/index.js" type="text/javascript"/></script>
+<!-- <script src="js/index.php" type="text/javascript"/></script> -->
     <!-- Page Content -->
     <div class="container">
 <div style="margin-top:48px;" class="notifications top-right"></div>

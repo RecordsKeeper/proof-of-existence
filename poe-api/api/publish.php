@@ -5,10 +5,10 @@
 	$email = $_POST['email'];
 	$message= $_POST['message'];
 	$signature=$_POST['signature'];
-  $dataHex = $_POST['dataHex'];
+  	$dataHex = $_POST['dataHex'];
    
 
-$config = include ('config.php');
+$config = include ('config-test.php');
 
 $chain = $config['chain_name'];
 $curl = curl_init();
@@ -23,7 +23,7 @@ CURLOPT_MAXREDIRS => 10,
 CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "POST",
-CURLOPT_POSTFIELDS => "{\"method\":\"publish\",\"params\":[\"root\",\"$signature\",\"$dataHex\"],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
+CURLOPT_POSTFIELDS => "{\"method\":\"publishfrom\",\"params\":[\"$config[address]\",\"root\",\"$signature\",\"$dataHex\"],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
 CURLOPT_HTTPHEADER => array(
   
   "cache-control: no-cache",

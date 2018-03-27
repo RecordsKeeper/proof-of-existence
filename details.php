@@ -43,10 +43,13 @@ include_once 'include/nav.php';
             Object.keys(table_data).forEach(function (k){
 
                     var signature = sign;
-                    var blocktime = table_data[k].blocktime;
+
+
+
                     var confirmations = table_data[k].confirmations;
                     var tx_id = table_data[k].txid;
-                    var timestamp = table_data[k].blocktime;
+                    
+                    
                     var dataHex = table_data[k].data;
                     var converted_data = hex2a(dataHex);
                     var final_output = JSON.parse(converted_data);
@@ -54,21 +57,38 @@ include_once 'include/nav.php';
                     var name = final_output.name;
                     var message = final_output.message;
                     var email = final_output.email;
-                    //console.log(name);
 
-                    //var name = converted_data.message;
-                    //console.log(name);
+                    if (confirmations == 0) {
 
-                    var date = new Date(timestamp*1000);
 
-                    var year = date.getUTCFullYear();
-                    var month = date.getUTCMonth() + 1;
-                    var day = date.getUTCDate();
-                    var hours = date.getUTCHours();
-                    var minutes = date.getUTCMinutes();
-                    var seconds = date.getUTCSeconds();
+                        var blocktime = "pending";
+                        var timestamp = "pending";
+                        var date = new Date(timestamp*1000);
+
+                        var year = date.getUTCFullYear();
+                        var month = date.getUTCMonth() + 1;
+                        var day = date.getUTCDate();
+                        var hours = date.getUTCHours();
+                        var minutes = date.getUTCMinutes();
+                        var seconds = date.getUTCSeconds();
+  
                   
-                  
+                    }
+
+                    else {
+
+                        var blocktime = table_data[k].blocktime;
+                        var timestamp = table_data[k].blocktime;
+                        var date = new Date(timestamp*1000);
+
+                        var year = date.getUTCFullYear();
+                        var month = date.getUTCMonth() + 1;
+                        var day = date.getUTCDate();
+                        var hours = date.getUTCHours();
+                        var minutes = date.getUTCMinutes();
+                        var seconds = date.getUTCSeconds();
+
+                    }
 
 
 

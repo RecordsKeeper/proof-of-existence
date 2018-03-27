@@ -1,6 +1,6 @@
 <?php
 
-$config = include ('config.php');
+$config = include ('config-test.php');
 
 $curl = curl_init();
 
@@ -15,7 +15,7 @@ curl_setopt_array($curl, array(
  CURLOPT_TIMEOUT => 30,
  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
  CURLOPT_CUSTOMREQUEST => "POST",
- CURLOPT_POSTFIELDS => "{\"method\":\"liststreamitems\",\"params\":[\"root\", false, 5],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
+ CURLOPT_POSTFIELDS => "{\"method\":\"liststreampublisheritems\",\"params\":[\"root\",\"$config[address]\", false, 5],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
  CURLOPT_HTTPHEADER => array(
    
    "cache-control: no-cache",
