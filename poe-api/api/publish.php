@@ -1,5 +1,12 @@
 <?php
 
+	$net = $_POST['net'];
+	if ($net == 'TestNetwork'){
+	$config = include('config-testnet.php');}
+	else {
+	  $config = include('config-mainnet.php');
+	}
+
 
 	$name = $_POST['name'];
 	$email = $_POST['email'];
@@ -8,7 +15,7 @@
   	$dataHex = $_POST['dataHex'];
    
 
-$config = include ('config-test.php');
+
 
 $chain = $config['chain_name'];
 $curl = curl_init();
@@ -23,7 +30,7 @@ CURLOPT_MAXREDIRS => 10,
 CURLOPT_TIMEOUT => 30,
 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 CURLOPT_CUSTOMREQUEST => "POST",
-CURLOPT_POSTFIELDS => "{\"method\":\"publishfrom\",\"params\":[\"$config[address]\",\"root\",\"$signature\",\"$dataHex\"],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
+CURLOPT_POSTFIELDS => "{\"method\":\"publishfrom\",\"params\":[\"$config[address]\",\"root\",\"$signature\",\"$dataHex\"],\"id\":\"curltext\",\"chain_name\":\"$chain\"}",
 CURLOPT_HTTPHEADER => array(
   
   "cache-control: no-cache",

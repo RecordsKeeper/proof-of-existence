@@ -1,12 +1,19 @@
 <?php
 
-$config = include ('config-test.php');
 
-$chain = $config['chain_name'];
+$net = $_POST['net'];
+if ($net == 'TestNetwork'){
+$config = include('config-testnet.php');}
+else {
+  $config = include('config-mainnet.php');
+}
+
+
+
 
 
 $transaction_id = $_POST['tx_id'];
-
+$chain = $config['chain_name'];
 
 $curl = curl_init();
 
@@ -20,7 +27,7 @@ curl_setopt_array($curl, array(
  CURLOPT_TIMEOUT => 30,
  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
  CURLOPT_CUSTOMREQUEST => "POST",
- CURLOPT_POSTFIELDS => "{\"method\":\"getwallettransaction\",\"params\":[\"$transaction_id\"],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
+ CURLOPT_POSTFIELDS => "{\"method\":\"getwallettransaction\",\"params\":[\"$transaction_id\"],\"id\":\"curltext\",\"chain_name\":\"$chain\"}",
  CURLOPT_HTTPHEADER => array(
   
    "cache-control: no-cache",

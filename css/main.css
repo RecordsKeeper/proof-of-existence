@@ -4,12 +4,13 @@
 	text-align: center;
 	padding: 1em 0;
 	margin: 1em 0;
-	color: #555;
-	border: 2px dashed #555;
+	    color: #7f90a3;
+    border: 2px dashed #7f8fa3;
 	border-radius: 7px;
 	cursor: default;
+  font-size: 13px;
 }
-
+label{font-size: 13px;}
 .hover {
 	color: #468847;
 	border-color: #468847;

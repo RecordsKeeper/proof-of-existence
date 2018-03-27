@@ -1,2 +1,3 @@
-/poe-api/api/config-test.php
+/poe-api/api/config-testnet.php
+/poe-api/api/config-mainnet.php
 poe-api/.DS_Store

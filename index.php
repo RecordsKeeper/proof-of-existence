@@ -11,7 +11,7 @@ include_once 'js.php';
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Publish Proof-of-Existence
-                    <small>Upload the file &amp; get the PoE link</small>
+                    <span class="headspan">Upload the file &amp; get the PoE link</span>
                 </h1>
             </div>
         </div>

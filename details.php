@@ -1,6 +1,18 @@
 <?php
 include_once 'include/header.php';
 include_once 'include/nav.php';
+include_once 'js.php';
+
+$net = $_POST['net'];
+    if ($net == 'TestNetwork'){
+    $config = include('config-testnet.php');}
+    else {
+      $config = include('config-mainnet.php');
+    }
+
+    
+$chain = $config['chain_name'];
+
 ?>
 
     <!-- Page Content -->
@@ -25,7 +37,7 @@ include_once 'include/nav.php';
   $.ajax({
    type: "POST",
    url: 'poe-api/api/verify.php',
-   data:{ signature : signature },
+   data:{ signature : signature, net: net },
    success:function(Response) {   
            
             var x = Response;

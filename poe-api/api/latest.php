@@ -1,6 +1,14 @@
 <?php
 
-$config = include ('config-test.php');
+	$net = $_POST['net'];
+	if ($net == 'TestNetwork'){
+	$config = include('config-testnet.php');}
+	else {
+	  $config = include('config-mainnet.php');
+	}
+
+	
+$chain = $config['chain_name'];
 
 $curl = curl_init();
 
@@ -15,7 +23,7 @@ curl_setopt_array($curl, array(
  CURLOPT_TIMEOUT => 30,
  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
  CURLOPT_CUSTOMREQUEST => "POST",
- CURLOPT_POSTFIELDS => "{\"method\":\"liststreampublisheritems\",\"params\":[\"root\",\"$config[address]\", false, 5],\"id\":\"curltext\",\"chain_name\":\"recordskeeper-test\"}",
+ CURLOPT_POSTFIELDS => "{\"method\":\"liststreampublisheritems\",\"params\":[\"root\",\"$config[address]\", false, 5],\"id\":\"curltext\",\"chain_name\":\"$chain\"}",
  CURLOPT_HTTPHEADER => array(
    
    "cache-control: no-cache",

@@ -19,7 +19,11 @@
     <link href="css/bootstrap-notify.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     
-    <!-- jQuery -->
+    <link rel="stylesheet" type="text/css" href="css/screen.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    
+    
+<!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
@@ -30,6 +34,10 @@
 
     <script src="js/bootstrap-notify.js" type="text/javascript"></script>
     <script src="js/filedrop.js" type="text/javascript"/></script>
+     <script src="js/theme.js" type="text/javascript"/></script>
+  <!--    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script> -->
     
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -20,7 +20,7 @@ include_once 'include/nav.php';
             
             <div class="col-md-12">
                 
-                <p>Please drop us an email at me@toshendra.com for knowing more about Proof-of-Existence.</p>
+                <p>Please drop us an email at <a href="mailto:hello@recordskeeper.co?Subject=Hello" target="_top"> hello@recordskeeper.co</a> for knowing more about Proof-of-Existence.</p>
                 
             </div>
 

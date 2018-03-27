@@ -35,6 +35,33 @@ $(document).ready(function() {
   var explain = $('#explain');
   var dropbox = $('.dropbox');
 
+ 
+
+            if(net == "TestNetwork"){
+                net = "test";
+                localStorage.setItem("network", "TestNetwork");
+                jQuery('#navigationbar').css('background', '#54b2ce');
+                jQuery('#togglecontlabel').text('Test Network');
+                jQuery('button').css('background', '#54b2ce');
+                jQuery('button').css('border', 'none');
+                jQuery('nav#nav').css('background', 'rgb(84, 178, 206)');
+                
+                
+           }
+           else{
+               net == "MainNetwork";
+               localStorage.setItem("network", "MainNetwork");
+                jQuery('#togglecontlabel').text('Main Network');
+                jQuery('#cb1').prop('checked', true);
+                 jQuery('#navigationbar').css('background', '#22283a');
+                  jQuery('#navigationbar').css('color', '#ffffff');
+               
+
+               
+           }
+
+ networkToggle();
+
   // uncomment this to try non-HTML support:
   //window.File = window.FileReader = window.FileList = window.Blob = null;
 
@@ -93,7 +120,7 @@ $(document).ready(function() {
   $.ajax({
    type: "POST",
    url: 'poe-api/api/latest.php',
-   data:{ count: 5 },
+   data:{ count: 5, net: net },
    success:function(Response) {   
            
             var x = Response;
@@ -103,7 +130,7 @@ $(document).ready(function() {
             var result = x.result;
             var data = result.reverse();
 
-            $('#recently_published').append('<table class="table table-striped table-hover"><tr><th>Digest</th><th> Timestamp </th></tr></table>');            
+            $('#recently_published').append('<table class="table table-striped table-hover"><tr><th>&nbsp;</th><th style="min-width: 204px;">Digest</th><th> Timestamp </th></tr></table>');            
             console.log("result:", data);
 
             var table_data = data;
@@ -209,7 +236,7 @@ $(document).ready(function() {
   $.ajax({
    type: "POST",
    url: 'poe-api/api/publish.php',
-   data:{name: name, email : email , message: message, signature : signature, dataHex: dataHex},
+   data:{name: name, email : email , message: message, signature : signature, dataHex: dataHex, net: net},
    success:function(Response) {   
            
             var x = Response;
@@ -247,7 +274,7 @@ $(document).ready(function() {
             $.ajax({
             type: "POST",
             url: 'poe-api/api/listwallettransactions.php',
-            data:{ tx_id : transaction_id },
+            data:{ tx_id : transaction_id, net: net },
             success:function(Response) {   
            
                     //console.log("list: ", transaction_id);
@@ -358,6 +385,47 @@ function toHex(str) {
 
 });
 
+
+    function ToggleNetwork(){
+        if($('#cb1').is(':checked'))
+            {
+             net = "test";
+               localStorage.setItem("network", "TestNetwork");
+                $('#navigationbar').css('background', '#54b2ce');
+                 $('#navigationbar').css('border', 'none');
+                 $('#togglecontlabel').text('Test Network');
+                
+                 jQuery('button').css('background', '#54b2ce');
+                jQuery('button').css('border', 'none');
+                  $('nav#nav').css('background', 'rgb(84, 178, 206)');
+                
+              
+            }
+            else
+            {
+                net = "main";
+               localStorage.setItem("network","MainNetwork");
+
+             
+                  
+                   jQuery('button').css('background', '#22283a');
+                jQuery('button').css('border', 'none');
+                 $('#navigationbar').css('background', '#22283a');
+                  $('#navigationbar').css('color', '#ffffff');
+                   $('nav#nav').css('background', '#22283a');
+              
+                   $('#togglecontlabel').text('Main Network');
+                  
+            }
+    }
+
+function networkToggle(){
+  $('.tgl-btn').click(function(){
+        ToggleNetwork();
+    });
+}
+
+var net;
 
 //Global variables
 
