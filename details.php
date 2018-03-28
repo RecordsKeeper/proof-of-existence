@@ -1,19 +1,9 @@
 <?php
 include_once 'include/header.php';
 include_once 'include/nav.php';
-include_once 'js.php';
-
-$net = $_POST['net'];
-    if ($net == 'TestNetwork'){
-    $config = include('config-testnet.php');}
-    else {
-      $config = include('config-mainnet.php');
-    }
-
-    
-$chain = $config['chain_name'];
 
 ?>
+<script src="js/index.js" type="text/javascript"/></script>
 
     <!-- Page Content -->
     <div class="container">
