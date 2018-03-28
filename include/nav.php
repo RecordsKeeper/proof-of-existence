@@ -28,6 +28,10 @@
                     <li>
                         <a href="contact.php">Contact</a>
                     </li>
+
+                    <li>
+                        <a href="tools.php">Other Tools</a>
+                    </li>
                 </ul>
                 <nav id="nav" style="background: rgb(34, 40, 58);">
                     <ul>

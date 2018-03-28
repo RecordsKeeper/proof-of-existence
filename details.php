@@ -65,14 +65,9 @@ include_once 'include/nav.php';
 
                         var blocktime = "pending";
                         var timestamp = "pending";
-                        var date = new Date(timestamp*1000);
+                      
 
-                        var year = date.getUTCFullYear();
-                        var month = date.getUTCMonth() + 1;
-                        var day = date.getUTCDate();
-                        var hours = date.getUTCHours();
-                        var minutes = date.getUTCMinutes();
-                        var seconds = date.getUTCSeconds();
+                        var time = "pending";
   
                   
                     }
@@ -90,6 +85,8 @@ include_once 'include/nav.php';
                         var minutes = date.getUTCMinutes();
                         var seconds = date.getUTCSeconds();
 
+                        var time = year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds+ " " + "(UTC TIME)";
+
                     }
 
 
@@ -100,7 +97,7 @@ include_once 'include/nav.php';
                     
                     
                     //$('#received_data').append('<table class="table table-striped table-hover"><tr><td>' + key+ '</td><td>' + table_data[k][key]+ '</td></tr></table>');
-                    $('#received_data').append("<table class='table table-striped table-hover'><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td> Transaction_id  </td> <td  >"+   tx_id   +"</td></tr><tr><td> Blocktime </td><td>"+   blocktime   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td>  Name   </td  ><td>"+   name   +"</td></tr><tr><td>  Email   </td  ><td>"+   email   +"</td></tr><tr><td>  Message   </td  ><td>"+   message   +"</td></tr><tr><td> Time </td><td>"+year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds+ " " + "(UTC TIME)"+ "</td></tr></table>");
+                    $('#received_data').append("<table class='table table-striped table-hover'><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td> Transaction_id  </td> <td  >"+   tx_id   +"</td></tr><tr><td> Blocktime(Unix) </td><td>"+   blocktime   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td>  Name   </td  ><td>"+   name   +"</td></tr><tr><td>  Email   </td  ><td>"+   email   +"</td></tr><tr><td>  Message   </td  ><td>"+   message   +"</td></tr><tr><td> Time </td><td>" + time + "</td></tr></table>");
 
       
             
