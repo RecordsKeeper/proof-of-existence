@@ -35,6 +35,7 @@ $(document).ready(function() {
                 net = "TestNetwork";
                 localStorage.setItem("network", "TestNetwork");
                 jQuery('#navigationbar').css('background', '#54b2ce');
+                jQuery('#navigationbar').css('border', 'none');
                 jQuery('#togglecontlabel').text('Test Network');
                 jQuery('button').css('background', '#54b2ce');
                 jQuery('button').css('border', 'none');
@@ -243,14 +244,14 @@ $(document).ready(function() {
             var tx_id = x.result;
 
             $('#wait').remove();
-            $('#description_container').append("<h2>Success</h2>");
+            $('#description_container').append("<h2 class='publishTable'>Success</h2>");
 
             var longUrl = "/proof-of-existence/details.php?signature=" + signature;
             
 
             //var items = [];
             $('#description_container').append(
-            '<table class="table table-striped table-hover"><thead><tr><th> Data </th><th> Value</th></tr></thead></table>');
+            '<table class="table table-striped table-hover publishTable" ><thead><tr><th> Data </th><th> Value</th></tr></thead></table>');
        
             /* 
 
@@ -317,7 +318,7 @@ $(document).ready(function() {
                       tx_url ;
                       console.log("Transaction url: ",tx_url);
                     
-                    $('#description_container').append("<table class='table table-striped table-hover'><tr><td> Name  </td> <td  >"+   name   +"</td></tr><tr><td>Email  </td> <td  >"+   email   +"</td></tr><tr><td> Message  </td> <td  >"+   message  +"</td></tr><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td> Url  </td> <td><a href= "+ longUrl +' target="_blank">' + longUrl + "</a></td></tr><tr><td>Blocktime  </td> <td  >"+   blocktime   +"</td></tr><tr><td> Blockhash </td><td>"+   blockhash   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td> Transaction Id    </td  ><td><a href='"+ tx_url + "" + tx_id + "' target='_blank'>" + tx_id + "</a></td></tr><tr><td> Time </td><td>"+year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds+ " " + "(UTC TIME)"+ "</td></tr></table>");
+                    $('#description_container').append("<table class='table table-striped table-hover publishTable'><tr><td> Name  </td> <td  >"+   name   +"</td></tr><tr><td>Email  </td> <td  >"+   email   +"</td></tr><tr><td> Message  </td> <td  >"+   message  +"</td></tr><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td> Url  </td> <td><a href= "+ longUrl +' target="_blank">' + longUrl + "</a></td></tr><tr><td>Blocktime  </td> <td  >"+   blocktime   +"</td></tr><tr><td> Blockhash </td><td>"+   blockhash   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td> Transaction Id    </td  ><td><a href='"+ tx_url + "" + tx_id + "' target='_blank'>" + tx_id + "</a></td></tr><tr><td> Time </td><td>"+year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds+ " " + "(UTC TIME)"+ "</td></tr></table>");
                 }
             });
             
@@ -340,6 +341,9 @@ $(document).ready(function() {
 });
  
   document.getElementById('file').addEventListener('change', function(evt) {
+    if($('.publishTable').length) {
+        $('.publishTable').remove();
+    }
     var f = evt.target.files[0];
     handleFileSelect(f);
   }, false);
@@ -362,6 +366,8 @@ $(document).ready(function() {
       },
       success: onRegisterSuccess
     });
+
+    
 
   });
 
@@ -398,6 +404,8 @@ function toHex(str) {
                   $('nav#nav').css('background', 'rgb(84, 178, 206)');
 
                   tx_url  = 'https://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/';
+
+                  window.location.href = "./";
         
               
             }
@@ -418,6 +426,8 @@ function toHex(str) {
                    $('#togglecontlabel').text('Main Network');
 
                    tx_url  = 'https://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/';
+                                     window.location.href = "./";
+
                  
             }
     }
