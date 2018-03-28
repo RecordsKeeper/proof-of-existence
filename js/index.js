@@ -1,6 +1,6 @@
 
 'use strict';
-
+var CONSOLE_DEBUG = true ;
 var translate = function(x) {
   return x;
 };
@@ -217,7 +217,13 @@ $(document).ready(function() {
 
  $( "#upload_form" ).submit(function( event ) {
   //alert( "Handler for .submit() called." );
+
   event.preventDefault();
+  if (captchaSuccess != 'success'){
+        $('#html_element').css("width", "304px");
+    $('#html_element').css("border", "1px solid red");
+    return false;
+  }
   var name = $('#name').val();
   var email = $('#email').val();
   var message = $('#message').val();
@@ -438,10 +444,54 @@ function networkToggle(){
     });
 }
 
+///////   GOOGLE RECAPTCHA CLIENT SIDE AND SERVER SIDE VERIFICATION   /////////////
+
+            //----------------------------------------------------/
+           // onloadCallback()
+          // this 
+         //----------------------------------------------------/
+
+
+
+
+var onloadCallback = function() {
+        grecaptcha.render('html_element', {    // oncallback render a div with id html_element
+          'sitekey' : '6LfcOEcUAAAAAAia1cMp60bnm1PMaFrmJ808il_D', // sitekey for the  captcha 
+          'theme' : 'light',           // change the theme for light and dark
+          'widgetId': 'widgetId',      // add widget id attribute which is optional
+          callback(){
+            CONSOLE_DEBUG && console.log( 'another callback function here');
+            var response = grecaptcha.getResponse();    // get the value of response when user submits recaptcha
+            CONSOLE_DEBUG && console.log('response from google : ', response);
+          
+            // send post method to captcha php that is usin curl post request for cross domain
+             $.post("poe-api/api/captcha.php",
+                    {
+                      googleResponse: response     // pass the google response
+
+                     
+                    },
+                      function(response, status){   // pass two parameters respnse  and status 
+                        CONSOLE_DEBUG && console.log("response after ssv : ", response, status); 
+
+                           if ( status == 'success'){
+                             captchaSuccess = status;
+                             $('#html_element').css("border", "none");
+                             CONSOLE_DEBUG && console.log("captchaSuccess :", captchaSuccess);
+                            
+
+                           }
+                           // alert response and the status here after verification from google 
+                      });
+            }
+        });
+    };
+////////   GOOGLE RECAPTCHA CLIENT SIDE AND SERVER SIDE VERIFICATION   /////////////
+
 var net = localStorage.getItem("network");
 
 //Global variables
-
+var captchaSuccess;
 var transaction_id;
 var table_data;
 var tx_url;

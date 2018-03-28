@@ -35,6 +35,7 @@ include_once 'include/nav.php';
                     <label for="message">Message: </label>
                     <textarea class="form-control" rows="3" maxlength="100" id="message" name="message" placeholder="(Optional) I am the original creator of this file & this Blockchain-based PoE is the proof."></textarea>
                   </div>
+
                   
                   <div class="form-group">
                     <label for="poeFile">File to Generate PoE</label>
@@ -52,7 +53,9 @@ include_once 'include/nav.php';
                           </fieldset>
                                     <!--<input type="file" id="poeFile">-->
                                   </div>
+
                                 <input type="hidden" id="signature" name="signature" value="">
+                                <div id="html_element" required></div>
                                   <button type="submit" name="submit" class="btn btn-primary">Generate PoE Now</button>
                 </form>
                 </div>

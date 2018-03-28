@@ -35,6 +35,9 @@
     <script src="js/bootstrap-notify.js" type="text/javascript"></script>
     <script src="js/filedrop.js" type="text/javascript"/></script>
      <script src="js/theme.js" type="text/javascript"/></script>
+      <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+        async defer>
+    </script>
   <!--    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
         async defer>
     </script> -->
