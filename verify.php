@@ -2,7 +2,22 @@
 include_once 'include/header.php';
 include_once 'include/nav.php';
 ?>
+<script src="js/index.js" type="text/javascript"/></script>
 <script src="js/verify.js" type="text/javascript"/></script>
+<style type="text/css">
+    html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.footer {
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+</style>
     <!-- Page Content -->
     <div class="container">
 

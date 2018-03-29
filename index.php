@@ -3,6 +3,16 @@ include_once 'include/header.php';
 include_once 'include/nav.php';
 
 ?>
+<style type="text/css">
+    #footer {
+    z-index: 1;
+    padding: 0 0 0 20px;
+    bottom: -50px;
+    font-size: 10px;
+    margin-top: 25px;
+    margin-bottom: 0px;
+}
+</style>
 <script src="js/index.js" type="text/javascript"/></script>
     <!-- Page Content -->
     <div class="container">

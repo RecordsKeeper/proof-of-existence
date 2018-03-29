@@ -2,7 +2,15 @@
 include_once 'include/header.php';
 include_once 'include/nav.php';
 ?>
+<style type="text/css">
 
+#footer{
+    position: absolute;
+    bottom: -30px;
+    font-size: 10px;
+}
+</style>
+<script src="js/index.js" type="text/javascript"/></script>
     <!-- Page Content -->
     <div class="container">
 
