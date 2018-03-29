@@ -46,6 +46,7 @@ include_once 'include/nav.php';
                               <li><a href="http://miner.recordskeeper.co/" target="_blank">Miner Statistics</a></li>
                               <li><a href="http://airdrop.recordskeeper.co/" target="_blank">Airdrop</a></li>
                               <li><a href="http://demo.recordskeeper.co/" target="_blank">Demo</a></li>
+                              <li><a href="http://docs.recordskeeper.co/" target="_blank">Documentation</a></li>
                         </ul>
 
                   
