@@ -6,10 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Blockchain-based Proof-of-Existence Application by Toshendra Sharma">
-    <meta name="author" content="Toshendra Sharma">
+    <meta name="description" content="RecordsKeeper-based Proof-of-Existence Application">
+    
 
-    <title>Blockchain-based Proof-of-Existence Application by Toshendra Sharma</title>
+    <title>RecordsKeeper-based Proof-of-Existence Application </title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.png">
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
