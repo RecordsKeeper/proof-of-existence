@@ -128,7 +128,7 @@ $(document).ready(function() {
             var result = x.result;
             var data = result.reverse();
 
-            $('#recently_published').append('<table class="table table-striped table-hover"><tr><th>&nbsp;</th><th style="min-width: 204px;">Digest</th><th> Timestamp </th></tr></table>');            
+            $('#recently_published').append('<table class="table table-striped table-hover"><tr><th>&nbsp;</th><th style="min-width: 204px;"> Document Digest</th><th> Timestamp </th></tr></table>');            
             console.log("result:", data);
 
             var table_data = data;
