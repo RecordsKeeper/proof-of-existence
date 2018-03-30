@@ -33,6 +33,7 @@ a.navbar-brand{
     padding: 7px 7px;
     font-size: 18px;
     line-height: 20px;
+    margin-top: 5px;
 }
 div#description {
     margin-top: 25px;
