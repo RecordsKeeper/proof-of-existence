@@ -23,7 +23,8 @@ include_once 'include/nav.php';
 <script>
             var signature = "<?php echo $_GET['signature']; ?>";
             
-            console.log("Signature is:", signature);
+            //console.log("Signature is:", signature);
+
   $.ajax({
    type: "POST",
    url: 'poe-api/api/verify.php',
@@ -32,14 +33,14 @@ include_once 'include/nav.php';
            
             var x = Response;
             x = JSON.parse(x);
-            console.log("publish response here", x);
+            //console.log("publish response here", x);
 
             var result = x.result;
             var data = result.reverse();
 
             sign = signature;
             table_data = data;
-            console.log("result2:", table_data);
+            //console.log("result2:", table_data);
 
 
             Object.keys(table_data).forEach(function (k){
@@ -95,9 +96,9 @@ include_once 'include/nav.php';
                     '<table class="table table-striped table-hover"><thead><tr><th> Data </th><th> Value</th></tr></thead></table>');
 
                     
+                    tx_url;
                     
-                    //$('#received_data').append('<table class="table table-striped table-hover"><tr><td>' + key+ '</td><td>' + table_data[k][key]+ '</td></tr></table>');
-                    $('#received_data').append("<table class='table table-striped table-hover'><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td> Transaction_id  </td> <td  >"+   tx_id   +"</td></tr><tr><td> Blocktime(Unix) </td><td>"+   blocktime   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td>  Name   </td  ><td>"+   name   +"</td></tr><tr><td>  Email   </td  ><td>"+   email   +"</td></tr><tr><td>  Message   </td  ><td>"+   message   +"</td></tr><tr><td> Time </td><td>" + time + "</td></tr></table>");
+                    $('#received_data').append("<table class='table table-striped table-hover'><tr><td> Signature  </td> <td  >"+   signature   +"</td></tr><tr><td> Transaction_id  </td> <td><a href='"+ tx_url + "" + tx_id + "' target='_blank'>" + tx_id + "</a></td></tr><tr><td> Blocktime(Unix) </td><td>"+   blocktime   +"</td></tr><tr><td>  Confirmations   </td  ><td>"+   confirmations   +"</td></tr><tr><td>  Name   </td  ><td>"+   name   +"</td></tr><tr><td>  Email   </td  ><td>"+   email   +"</td></tr><tr><td>  Message   </td  ><td>"+   message   +"</td></tr><tr><td> Time </td><td>" + time + "</td></tr></table>");
 
       
             
@@ -124,6 +125,7 @@ include_once 'include/nav.php';
             //Global variables
             var table_data;
             var sign;
+            var tx_url;
 
              </script>   
         <!-- Portfolio Item Row -->
