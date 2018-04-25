@@ -19,10 +19,20 @@
     background-color: #23293a;
     font-weight: 800;
     border-color: #d2d7dd;
+}
+.navbar-brand>img {
+    display: block;
+    margin-left: 20px;
+}
 
+div#bs-example-navbar-collapse-1{
+      background: rgb(35, 41, 58);
+    margin-top: 0px;
+        height: 49px!important;
 }
 #navigationbar{
   background: #212739;
+  height: 49px;
 }
 a.navbar-brand{
   width: 300px;
@@ -630,8 +640,9 @@ if it's not present, don't show loader */
 .tgl + .tgl-btn {
   outline: 0;
   display: block;
-      width: 3em;
-    height: 1.5em;
+      width: 4em;
+    height: 2em;
+    font-size: 10px;
   position: relative;
   cursor: pointer;
   -webkit-user-select: none;
@@ -915,7 +926,11 @@ th{
     margin-top: 50px;
 
 }
-
+div#bs-example-navbar-collapse-1{
+      background: rgb(35, 41, 58);
+    margin-top: 0px;
+        height: auto !important;
+}
 
 }
 
@@ -1050,3 +1065,9 @@ input#authorize{
 }
 
 }
+
+/*.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: -35px;
+}*/
+
+
