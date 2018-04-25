@@ -40,6 +40,8 @@ $(document).ready(function() {
                 jQuery('button').css('background', '#54b2ce');
                 jQuery('button').css('border', 'none');
                 jQuery('nav#nav').css('background', 'rgb(84, 178, 206)');
+                jQuery('div#bs-example-navbar-collapse-1').css('background', 'rgb(84, 178, 206)');
+                jQuery('div#bs-example-navbar-collapse-1').css('border', 'none');
                 console.log(localStorage.getItem("network"));
                 tx_url  = 'https://test-explorer.recordskeeper.co/RecordsKeeper%20Testnet/tx/';
            }
@@ -50,6 +52,7 @@ $(document).ready(function() {
                 jQuery('#cb1').prop('checked', true);
                  jQuery('#navigationbar').css('background', '#22283a');
                   jQuery('#navigationbar').css('color', '#ffffff');
+                   jQuery('div#bs-example-navbar-collapse-1').css('background', '#22283a');
                                  
                 tx_url  = 'https://explorer.recordskeeper.co/RecordsKeeper%20Mainnet/tx/';
 

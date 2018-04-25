@@ -26,7 +26,7 @@
 }
 
 div#bs-example-navbar-collapse-1{
-      background: rgb(35, 41, 58);
+      /*background: rgb(35, 41, 58);*/
     margin-top: 0px;
         height: 49px!important;
 }
