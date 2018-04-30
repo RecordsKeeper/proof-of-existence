@@ -22,7 +22,8 @@
 }
 .navbar-brand>img {
     display: block;
-    margin-left: 20px;
+        width: 246px;
+    margin-left: 15px;
 }
 
 div#bs-example-navbar-collapse-1{
