@@ -34,17 +34,17 @@
                     </li>
                 </ul>
                 <nav id="nav" style="background: rgb(34, 40, 58);">
-                    <!-- <ul>
+                    <ul>
                         
-                        <div id="togglecont">
+                        <!-- <div id="togglecont">
                             <input class="tgl tgl-light" id="cb1" type="checkbox">
                             <label class="tgl-btn" for="cb1"></label>
-                        </div>
+                        </div> -->
                         <span>
                             <label id="togglecontlabel">Main Network</label>
                         </span>     
                     
-                   </ul> -->
+                   </ul>
                </nav>
             </div>
             <!-- /.navbar-collapse -->

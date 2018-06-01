@@ -36,7 +36,7 @@ $(document).ready(function() {
                 localStorage.setItem("network", "TestNetwork");
                 jQuery('#navigationbar').css('background', '#54b2ce');
                 jQuery('#navigationbar').css('border', 'none');
-                jQuery('#togglecontlabel').text('Test Network');
+                jQuery('#togglecontlabel').text('This demo is working on Test Network');
                 jQuery('button').css('background', '#54b2ce');
                 jQuery('button').css('border', 'none');
                 jQuery('nav#nav').css('background', 'rgb(84, 178, 206)');
