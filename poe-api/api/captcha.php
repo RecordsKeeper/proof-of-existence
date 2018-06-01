@@ -1,6 +1,6 @@
 <?php
 	
-$config = include('config-mainnet.php');
+$config = include('config-testnet.php');
 
 
 $post = [
